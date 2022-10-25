@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div>
+        <div className='mb-4'>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home"><Link to='/'> Learn Tech</Link> </Navbar.Brand>
