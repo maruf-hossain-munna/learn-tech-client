@@ -17,7 +17,7 @@ const CourseDetails = () => {
                     <Card.Text>
                         {description}
                     </Card.Text>
-                    <div className='d-flex justify-content-between text-primary'>
+                    <div className='d-flex justify-content-between text-primary mb-2'>
                         <h4>Price: </h4>
                         <h4>{price}$ </h4>
                     </div>
