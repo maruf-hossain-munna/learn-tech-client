@@ -1,37 +1,38 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import {  GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
-    const {providerLogin} = useContext(AuthContext);
+    const { providerLogin, createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
-    const handleGoogleSignIn = (provider) =>{
+    const handleGoogleSignIn = (provider) => {
         providerLogin(googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-        })
-        .catch(error => console.error(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error(error))
     }
 
-    const handleGithubSignIn = () =>{
+    const handleGithubSignIn = () => {
         providerLogin(githubProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-        })
-        .catch(error => console.error(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error(error))
     }
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const form = event.target;
@@ -40,9 +41,17 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photoURL, email, password);
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/')
+            })
+            .catch(error => console.error(error))
     }
     return (
-        <div className='w-md-50 p-4 mx-auto shadow-lg rounded-4 mt-lg-4'>
+        <div className='w-50 p-4 mx-auto shadow-lg rounded-4 mt-lg-4'>
             <Form className='mb-4' onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
@@ -61,7 +70,7 @@ const Register = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name='password' placeholder="Password" required/>
+                    <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
 
                 <Button variant="primary" className='w-100' type="submit">
