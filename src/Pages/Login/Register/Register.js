@@ -90,7 +90,7 @@ const Register = () => {
             </Form>
 
             <Button onClick={handleGoogleSignIn} variant="outline-primary" className='w-100' > <FaGoogle> </FaGoogle>  Continue with Google</Button>
-            <Button variant="outline-dark" className='w-100 mt-3'><FaGithub />  Continue with Github</Button>
+            <Button onClick={handleGithubSignIn} variant="outline-dark" className='w-100 mt-3'><FaGithub />  Continue with Github</Button>
         </div>
     );
 };

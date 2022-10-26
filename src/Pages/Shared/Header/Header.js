@@ -66,7 +66,7 @@ const Header = () => {
                                             src={user?.photoURL}
                                         ></Image>
                                         :
-                                        <FaUser />
+                                        <FaUser  style={{fontSize:'30px', marginTop:'5px'}}/>
                                 }
                             </Nav.Link>
                         </Nav>
