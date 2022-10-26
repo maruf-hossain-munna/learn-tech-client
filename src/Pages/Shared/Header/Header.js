@@ -18,9 +18,6 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
-    const showingName = () => {
-        Tooltip(user?.displayName)
-    }
 
     return (
         <div className='mb-4'>
@@ -56,11 +53,11 @@ const Header = () => {
                                         </>
                                 }
                             </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
+                            <Nav.Link eventKey={2} >
                                 {
                                     user?.photoURL ?
                                         <Image
-                                            onMouseMove={showingName}
+                                            
                                             style={{ height: '40px' }}
                                             roundedCircle
                                             src={user?.photoURL}
