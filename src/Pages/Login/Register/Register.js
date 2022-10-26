@@ -6,8 +6,10 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { useState } from 'react';
 
 const Register = () => {
+    const [error, setError] = useState('');
     const { providerLogin, createUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -46,9 +48,14 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
+                form.reset();
+                setError('');
+                navigate('/');
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+            })
     }
     return (
         <div className='w-50 p-4 mx-auto shadow-lg rounded-4 mt-lg-4'>
@@ -76,8 +83,9 @@ const Register = () => {
                 <Button variant="primary" className='w-100' type="submit">
                     Register
                 </Button>
+                <p className='text-danger'>{error} </p>
 
-                <p>Have any account? please <Link to='/login'>Login</Link></p>
+                <p>Have any account? Please <Link to='/login'>Login</Link></p>
 
             </Form>
 
