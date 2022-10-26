@@ -2,11 +2,48 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import {  GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
+    const {providerLogin} = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGoogleSignIn = (provider) =>{
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+    }
+
+    const handleGithubSignIn = () =>{
+        providerLogin(githubProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+    }
+
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photoURL, email, password);
+    }
     return (
-        <div className='w-50 p-4 mx-auto shadow-lg rounded-4 mt-lg-4'>
-            <Form className='mb-4'>
+        <div className='w-md-50 p-4 mx-auto shadow-lg rounded-4 mt-lg-4'>
+            <Form className='mb-4' onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
                     <Form.Control type="text" name='name' placeholder="Your name" required />
@@ -14,7 +51,7 @@ const Register = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Photo URL</Form.Label>
-                    <Form.Control type="text" name='name' placeholder="Photo URL" required />
+                    <Form.Control type="text" name='photoURL' placeholder="Photo URL" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -35,8 +72,8 @@ const Register = () => {
 
             </Form>
 
-            <Button variant="outline-primary" className='w-100' >Continue with Google</Button>
-            <Button variant="outline-dark" className='w-100 mt-3'>Continue with Github</Button>
+            <Button onClick={handleGoogleSignIn} variant="outline-primary" className='w-100' > <FaGoogle> </FaGoogle>  Continue with Google</Button>
+            <Button variant="outline-dark" className='w-100 mt-3'><FaGithub />  Continue with Github</Button>
         </div>
     );
 };
