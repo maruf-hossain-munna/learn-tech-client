@@ -9,7 +9,8 @@ const PrivateRoute = ({children}) => {
     // console.log(location)
     
     if(loading){
-        return <Spinner animation="border"  variant="primary" />
+        return <>Loading... </>
+        // return <Spinner animation="border"  variant="primary" />
     }
 
     if(!user){

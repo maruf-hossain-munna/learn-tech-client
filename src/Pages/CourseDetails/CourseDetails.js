@@ -4,12 +4,15 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const CourseDetails = () => {
+
     const course = useLoaderData();
     const { id, name, title, price, description, img, category_id } = course;
     console.log(course);
+
+    
     return (
         <div className='mx-lg-5 px-lg-4 course-details'>
-            <Card className='py-4  mb-5'  >
+            <Card className='py-4  mb-5' >
                 <Card.Img variant="top" className='w-50 mx-auto' src={img} />
                 <Card.Body>
                     <h2 className='text-danger'>{name} </h2>
@@ -24,6 +27,9 @@ const CourseDetails = () => {
                     <Link to={`/category/${category_id}`}>
                         <Button variant="primary">Go Back Categories News</Button>
                     </Link>
+
+
+                    
 
                 </Card.Body>
             </Card>

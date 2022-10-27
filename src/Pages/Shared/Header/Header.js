@@ -67,7 +67,7 @@ const Header = () => {
                                 {
                                     user?.photoURL ?
                                         <Image
-                                            
+                                            Tooltip={user?.displayName}
                                             style={{ height: '40px' }}
                                             roundedCircle
                                             src={user?.photoURL}

@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---------------------------------------------
+
+
+My Projects:---
+* WebSite Name:-  Learn Tech
+* Live Website link:-  
+
+simply project summary:---
+* Firstly create a react app and server site. creating some fake in server site.
+* install bootstrap and react bootstrap for client site.
+* create a responsive navbar and craeting toggle theme button.
+* install firebase and setup fireabase.
+* Google, github and email password used for authentication in this site.
+*  then showing all courses and details page are private route.
+* if you see my details page should have login this site.
+* 
