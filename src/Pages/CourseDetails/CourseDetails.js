@@ -9,7 +9,11 @@ const CourseDetails = () => {
     const { id, name, title, price, description, img, category_id } = course;
     console.log(course);
 
-    
+
+    const checkOut = () => {
+        alert('Check out successful')
+    }
+
     return (
         <div className='mx-lg-5 px-lg-4 course-details'>
             <Card className='py-4  mb-5' >
@@ -24,12 +28,20 @@ const CourseDetails = () => {
                         <h4>Price: </h4>
                         <h4>{price}$ </h4>
                     </div>
-                    <Link to={`/category/${category_id}`}>
-                        <Button variant="primary">Go Back Categories News</Button>
-                    </Link>
+                    <div className='d-flex justify-content-between'>
+                        <div>
+                            <Link to={`/courses/${category_id}`}>
+                                <Button variant="primary">Back to categories course</Button>
+                            </Link>
+                        </div>
 
+                        <div>
+                            <Link to='/courses'>
+                                <Button onClick={checkOut} > Check Out </Button>
+                            </Link>
+                        </div>
+                    </div>
 
-                    
 
                 </Card.Body>
             </Card>

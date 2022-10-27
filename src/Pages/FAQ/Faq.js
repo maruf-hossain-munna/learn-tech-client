@@ -2,8 +2,10 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div>
-            <h2>This is faq page</h2>
+        <div className='text-center'>
+            <h2>This is FAQ page</h2>
+            <p>But nothing to write, sorry</p>
+    
         </div>
     );
 };

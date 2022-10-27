@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import PrivateAccess from "../../Pages/Access/PrivateAccess";
 import Blog from "../../Pages/Blog/Blog";
 import Category from "../../Pages/Category/Category";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
@@ -47,9 +48,10 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                element: <PrivateRoute> <CourseDetails></CourseDetails> </PrivateRoute>,
+                element:  <PrivateRoute> <CourseDetails></CourseDetails> </PrivateRoute> ,
                 loader: ({params}) => fetch(`https://learn-tech-server.vercel.app/courses/${params.id}`)
             },
+            
             {
                 path: '*',
                 element: 'This page is not found 404'
