@@ -83,5 +83,5 @@ simply project summary:---
 * install firebase and setup fireabase.
 * Google, github and email password used for authentication in this site.
 *  then showing all courses and details page are private route.
-* if you see my details page should have login this site.
+* if you see my details page must be login this site.
 * 
