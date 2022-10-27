@@ -2,6 +2,12 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Pdf from "react-to-pdf";
+import ReactDOM from "react-dom";
+
+
+
+const ref = React.createRef();
 
 const CourseDetails = () => {
 
@@ -16,7 +22,7 @@ const CourseDetails = () => {
 
     return (
         <div className='mx-lg-5 px-lg-4 course-details'>
-            <Card className='py-4  mb-5' >
+            <Card className='py-4  mb-5' ref={ref}>
                 <Card.Img variant="top" className='w-50 mx-auto' src={img} />
                 <Card.Body>
                     <h2 className='text-danger'>{name} </h2>
@@ -42,6 +48,12 @@ const CourseDetails = () => {
                         </div>
                     </div>
 
+                    <Pdf targetRef={ref} filename="code-example.pdf">
+                        {({ toPdf }) => <Button variant="outline-dark"
+                         onClick={toPdf}
+                         className='mt-3 w-100 font-semibold'
+                         >Download PDF File</Button>}
+                    </Pdf>
 
                 </Card.Body>
             </Card>
