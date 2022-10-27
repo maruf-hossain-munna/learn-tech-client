@@ -7,10 +7,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useState } from 'react';
+import { Profiler } from 'react';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { providerLogin, createUser } = useContext(AuthContext);
+    const { providerLogin, createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
@@ -49,6 +50,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                handleUpdateProfile(name, photoURL)
                 setError('');
                 navigate('/');
             })
@@ -57,6 +59,18 @@ const Register = () => {
                 setError(error.message);
             })
     }
+
+    const handleUpdateProfile = (name, photoURL) =>{
+        const profile = {
+            displayName : name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(() =>{})
+        .catch(error => console.error(error))
+    }
+
+
     return (
         <div className='form-width p-4 mx-auto shadow-lg rounded-4 mt-lg-4'>
             <Form className='mb-4' onSubmit={handleSubmit} >

@@ -13,10 +13,11 @@ const Login = () => {
     const {providerLogin, signIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
-    const from = location.state?.from?.pathname || '/';
+    
 
     const handleGoogleSignIn = (provider) =>{
         providerLogin(googleProvider)
