@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Image, Tooltip } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
@@ -10,7 +11,8 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
-    const { user, logOut, setTheme } = useContext(AuthContext);
+    const [theme, setTheme] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -54,6 +56,14 @@ const Header = () => {
                                 }
                             </Nav.Link>
                             <Nav.Link eventKey={2} >
+                                
+                                    <Button 
+                                        variant='outline-light'
+                                        className='me-2'
+                                        onClick={()=> setTheme(!theme)}>
+                                            {theme ? 'Dark' : 'Light'}
+                                    </Button>
+                                
                                 {
                                     user?.photoURL ?
                                         <Image
