@@ -8,8 +8,8 @@ const CourseDetails = () => {
     const { id, name, title, price, description, img, category_id } = course;
     console.log(course);
     return (
-        <div className='mx-5 px-4 '>
-            <Card className='py-4 w-50 mb-5'  >
+        <div className='mx-lg-5 px-lg-4 course-details'>
+            <Card className='py-4  mb-5'  >
                 <Card.Img variant="top" className='w-50 mx-auto' src={img} />
                 <Card.Body>
                     <h2 className='text-danger'>{name} </h2>

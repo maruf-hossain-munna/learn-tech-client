@@ -10,7 +10,7 @@ const Category = () => {
     return (
         <div>
             <h2> This category has : {courses.length} </h2>
-            <div>
+            <div className='gridCard '>
                 {
                     courses.map(course => <Course
                         key={course.id}

@@ -21,7 +21,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch('https://learn-tech-server.vercel.app/courses')
             },
             {
                 path: '/faq',
@@ -48,7 +49,12 @@ export const routes = createBrowserRouter([
                 path: '/courses/:id',
                 element: <PrivateRoute> <CourseDetails></CourseDetails> </PrivateRoute>,
                 loader: ({params}) => fetch(`https://learn-tech-server.vercel.app/courses/${params.id}`)
-            }
+            },
+            // {
+            //     path: '/courses',
+            //     element: <Courses></Courses>,
+            //     loader: () => fetch('https://learn-tech-server.vercel.app/courses')
+            // }
         ]
     }
 

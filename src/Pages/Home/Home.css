@@ -1,0 +1,6 @@
+.home-banner {
+    background-image: url(https://github.com/maruf21hossain/image/blob/main/homeBanner.jpg?raw=true);
+    max-width: 100%;
+    height: auto;
+    border-radius: 25px;
+}

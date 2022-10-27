@@ -7,7 +7,7 @@ import './Course.css';
 const Course = ({ course }) => {
     const { img, title, name, description, id } = course;
     return (
-        <div className='gridCard  '>
+        <div className=' '>
             
                 <Card className='mb-3'>
                     <Card.Img variant="top"
